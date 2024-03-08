@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breed Detection</title>
+    <style>
+        /* Style to set the maximum width of the image */
+        img {
+            max-width: 400px; /* Set the maximum width as per your requirement */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <h1>Breed Detection</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image">
+        <button type="submit">Detect Breed</button>
+    </form>
+
+    {% if uploaded_image %}
+        <h2>Uploaded Image</h2>
+        <!-- Display the smaller version of the uploaded image -->
+        <img src="{{ encoded_image }}" alt="Uploaded Image">
+
+        {% if prediction_result %}
+            <h2>Prediction</h2>
+            <p>Breed: {{ prediction_result.breed }}</p>
+            <p>Accuracy: {{ prediction_result.accuracy|floatformat:"2" }}%</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

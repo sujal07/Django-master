@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breed Detection Result</title>
+</head>
+<body>
+    <h1>Breed Detection Result</h1>
+    <p>Predicted Breed: {{ predicted_class }}</p>
+    <p>Confidence Score: {{ confidence_score }}</p>
+    <a href="{% url 'breed_detection' %}">Detect Another Breed</a>
+</body>
+</html>
